@@ -30,7 +30,14 @@ server.post('/courses', (request, reply) => {
 
     const courseId = crypto.randomUUID()
 
-    courses.push({id: courseId, title: 'Nuevo curso'})
+    const courseTitle = request.body.title
+
+    if (!courseTitle) {
+        return reply.status(400).send({ message: 'Título obligatorio.' })
+    }
+
+
+    courses.push({id: courseId, title: courseTitle})
 
     return reply.status(201).send({courseId})
 })
@@ -38,3 +45,7 @@ server.post('/courses', (request, reply) => {
 server.listen({ port:3333 }).then(() => {
     console.log("HTTP server running!!!")
 })
+
+/*
+creart DELETE, UPDATE pendientes
+*/
