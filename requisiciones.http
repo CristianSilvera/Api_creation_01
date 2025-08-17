@@ -13,4 +13,4 @@ GET http://localhost:3333/courses
 
 ####
 
-GET http://localhost:3333/courses/ceded666-5e23-41f4-b511-490c8108f6ed
+GET http://localhost:3333/courses/2a33cba9-b5ed-46b1-b983-29c7df0c731d
