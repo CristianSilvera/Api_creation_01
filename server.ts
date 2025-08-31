@@ -1,5 +1,7 @@
 import { eq } from 'drizzle-orm'
 import fastify from "fastify"
+import { validatorCompiler, serializerCompiler, type ZodTypeProvider } from 'fastify-type-provider-zod'
+import { z } from 'zod'
 import {db} from './src/database/client.ts'
 import { courses } from "./src/database/schema.ts"
 
@@ -13,15 +15,14 @@ const server = fastify({
                 ignore: 'pid,hostname',
             },
         },
-    }
+    },
 
-})
+}).withTypeProvider<ZodTypeProvider>()
 
-// const courses = [
-//     {id: "1", title: 'Curso de Node.js'},
-//     {id: "2", title: 'Curso de React'},
-//     {id: "3", title: 'Curso de React Native'}
-// ]
+server.setSerializerCompiler(serializerCompiler)
+server.setValidatorCompiler(validatorCompiler)
+
+
 
 server.get('/courses', async (request, reply) => {
 
@@ -62,19 +63,14 @@ server.get('/courses/:id', async (request, replay) => {
 
 
 
-server.post('/courses', async (request, reply) => {
-
-    type Body = {
-        title: string
-    }
-
-
-    const body = request.body as Body
-    const courseTitle = body.title
-
-    if (!courseTitle) {
-        return reply.status(400).send({ message: 'Título obligatorio.' })
-    }
+server.post('/courses', {
+    schema: {
+        body: z.object({
+            title: z.string().min(5, 'El título necesita tener al menos 5 caractéres.'),
+        })
+    },
+}, async (request, reply) => {
+    const courseTitle = request.body.title
 
 
     const result = await db
