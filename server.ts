@@ -58,26 +58,36 @@ server.get('/courses/:id', async (request, replay) => {
 
 })
 
-// server.post('/courses', (request, reply) => {
-
-//     type Body = {
-//         title: string
-//     }
-
-//     const courseId = crypto.randomUUID()
-
-//     const body = request.body as Body
-//     const courseTitle = body.title
-
-//     if (!courseTitle) {
-//         return reply.status(400).send({ message: 'Título obligatorio.' })
-//     }
 
 
-//     courses.push({id: courseId, title: courseTitle})
 
-//     return reply.status(201).send({courseId})
-// })
+
+server.post('/courses', async (request, reply) => {
+
+    type Body = {
+        title: string
+    }
+
+
+    const body = request.body as Body
+    const courseTitle = body.title
+
+    if (!courseTitle) {
+        return reply.status(400).send({ message: 'Título obligatorio.' })
+    }
+
+
+    const result = await db
+        .insert(courses)
+        .values({ title: courseTitle })
+        .returning()
+
+    
+
+    return reply.status(201).send({courseId: result[0].id})
+})
+
+
 
 server.listen({ port:3333 }).then(() => {
     console.log("HTTP server running!!!")
