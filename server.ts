@@ -1,10 +1,10 @@
 import { fastifySwagger } from '@fastify/swagger'
-import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import fastify from "fastify"
 import { validatorCompiler, serializerCompiler, type ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod'
 import { createCoursesRoute } from './src/routes/create-course.ts'
 import { getCourseByIdRoute } from './src/routes/get-course-by-id.ts'
 import { getCoursesRoute } from './src/routes/get-courses.ts'
+import scalarAPIReference from '@scalar/fastify-api-reference'
 
 
 
@@ -31,8 +31,8 @@ server.register(fastifySwagger, {
     transform: jsonSchemaTransform, 
 })
 
-server.register(fastifySwaggerUi, {
-    routePrefix: '/docs'
+server.register (scalarAPIReference, {
+    routePrefix: '/docs',
 })
 
 server.setSerializerCompiler(serializerCompiler)
