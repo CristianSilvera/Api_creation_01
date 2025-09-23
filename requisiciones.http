@@ -11,6 +11,7 @@ GET http://localhost:3333/courses?orderBy=title
 
 
 
+
 ####
 
 GET http://localhost:3333/courses/a7253c3d-52cc-4883-b45e-84b52d9e6530
