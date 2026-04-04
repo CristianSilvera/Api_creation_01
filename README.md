@@ -43,6 +43,10 @@ npm run db:studio
 ```bash
 npm run dev
 ```
+## Ejecutando los test
+```bash
+npm run test
+```
 - Puerto por defecto: `http://localhost:3333`
 - Logs legibles habilitados
 - Documentación de la API (en desarrollo): `http://localhost:3333/docs`
