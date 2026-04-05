@@ -6,10 +6,9 @@ export default defineConfig({
       enabled: true,
       provider: "v8",
       reporter: ["text", "text-summary", "html"],
-      reportsDirectory: "./coverage",
       all: true,
       include: ["src/**/*.ts"],
-      // exclude: ["src/tests/**", "**/*.test.ts"],
+      exclude: ['**/*.test.ts', 'src/tests/**'],
     },
   },
 })

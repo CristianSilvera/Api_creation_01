@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import request from 'supertest'
 import { server } from '../app.ts'
-import { makeCourse } from '../tests/factories/make-aourse.ts'
+import { makeCourse } from '../tests/factories/make-course.ts'
 
 
 test('return 404 for non existing courses', async () => {
