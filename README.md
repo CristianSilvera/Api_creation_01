@@ -43,10 +43,7 @@ npm run db:studio
 ```bash
 npm run dev
 ```
-## Ejecutando los test
-```bash
-npm run test
-```
+
 - Puerto por defecto: `http://localhost:3333`
 - Logs legibles habilitados
 - Documentación de la API (en desarrollo): `http://localhost:3333/docs`
@@ -127,6 +124,15 @@ sequenceDiagram
 - Conexión rechazada a PostgreSQL: confirma que `docker compose up -d` esté ejecutándose y que el puerto `5432` no esté en uso.
 - Variable `DATABASE_URL` ausente: verifica tu archivo `.env`. Drizzle requiere esta variable para `db:generate`, `db:migrate` y `db:studio`.
 - La documentación no aparece en `/docs`: asegúrate de que `NODE_ENV=development` esté en el `.env` y reinicia el servidor.
+
+## Ejecutando test
+```bash
+npm run test
+```
+```bash
+open coverage/index.html
+```
+<img width="1851" height="382" alt="Captura desde 2026-04-04 21-39-02" src="https://github.com/user-attachments/assets/3a197d75-859d-4a4d-bfad-4f4408ac1482" />
 
 ## Licencia
 ISC (ver `package.json`).
