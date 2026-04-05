@@ -132,7 +132,11 @@ npm run test
 ```bash
 open coverage/index.html
 ```
-<img width="1851" height="382" alt="Captura desde 2026-04-04 21-39-02" src="https://github.com/user-attachments/assets/3a197d75-859d-4a4d-bfad-4f4408ac1482" />
+<img width="1851" height="382" alt="Captura desde 2026-04-04 23-20-29" src="https://github.com/user-attachments/assets/e5cbf031-bc6e-4f6f-bc31-64371313eae3" />
+
+
+
+
 
 ## Licencia
 ISC (ver `package.json`).
